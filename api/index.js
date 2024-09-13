@@ -1,3 +1,7 @@
+/*
+*               ?first=(.*)&last=(.*)"
+*/
+
 const express = require("express");
 const app = express();
 require('dotenv').config();
@@ -6,7 +10,8 @@ let port = Number(process.env.VERCEL_PORT);
 
 // this is the part you will see
 app.get("/", (req, res) => {
-    
+    res.send(`query params: ${req.query.first} ${req.query.last}`);
+    /*
     const url = "https://www.searchapi.io/api/v1/search";
     const params = new URLSearchParams({
         "engine": "google",
@@ -21,7 +26,7 @@ app.get("/", (req, res) => {
     })
     .catch(error => {
         console.error('Error:', error);
-    });
+    }); */
 });
 
 app.listen(port, () => console.log(`Your express server deployed on vercel is listening on port ${port}`));
